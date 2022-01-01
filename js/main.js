@@ -30,14 +30,14 @@ const _ETH_BLOCKS_PER_REWARD = 600;
 const _HASHRATE_MULTIPLIER = 2**22; /* TODO: calculate this from max_target (https://en.bitcoin.it/wiki/Difficulty) */
 /* contract variable storage locations */
 const _LAST_DIFF_START_BLOCK_INDEX = '6';
-const _ERA_INDEX = '7';
-const _TOKENS_MINTED_INDEX = '20';
+const _ERA_INDEX = '13';
+const _TOKENS_MINTED_INDEX = '25';
 const _MINING_TARGET_INDEX = '11';
 /* calculated contract values */
 const _MAXIMUM_TARGET_BN = new Eth.BN(_MAXIMUM_TARGET_STR, 10);
 const _MINIMUM_TARGET_BN = new Eth.BN(_MINIMUM_TARGET);
 const _IDEAL_BLOCK_TIME_SECONDS = _ETH_BLOCKS_PER_REWARD * _SECONDS_PER_ETH_BLOCK;
-console.log("F111zzzzz");
+console.log("F2!");
 /* TODO: figure out why it doesn't work w metamask */
 var eth = new Eth(new Eth.HttpProvider("https://polygon-mumbai.g.alchemy.com/v2/-vhbuZz5Q7xFSQ0NWOktejBe2kBJkAPZ"));
 // if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
@@ -205,7 +205,7 @@ stats = [
   ['Current Average Reward Time',   null,                                 "minutes",          1,          null     ], /* mining difficulty */
   ['Last Difficulty Start Block',   token.latestDifficultyPeriodStarted,  "",                 1,          null     ], /* mining difficulty */
   ['Tokens Minted',                 token.tokensMinted,                   _CONTRACT_SYMBOL,   0.00000000000000001, null     ], /* supply */
-  ['Max Supply for Current Era',    null,                _CONTRACT_SYMBOL,   0.00000000000000001, null     ], /* mining */
+  ['Max Supply for Current Era',    token.maxSupplyForEra,                _CONTRACT_SYMBOL,   0.00000000000000001, null     ], /* mining */
   ['Supply Remaining in Era',       null,                                 _CONTRACT_SYMBOL,   0.00000000000000001, null     ], /* mining */
   ['Last Eth Reward Block',         null,       "",                 1,          null     ], /* mining */
   ['Last Eth Block',                eth.blockNumber,                      "",                 1,          null     ], /* mining */
