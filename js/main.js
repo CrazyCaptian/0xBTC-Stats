@@ -13,7 +13,7 @@ el('#footerversion').innerHTML = version;
 
 
 /* intrinsic values */
-const _SECONDS_PER_ETH_BLOCK = 15;
+const _SECONDS_PER_ETH_BLOCK = 2;
 const _ZERO_BN = new Eth.BN(0, 10);
 
 /* contract constants */
@@ -26,7 +26,7 @@ const _CONTRACT_ADDRESS = "0xF480a751e6aEc373f49Ef06f6E27EFbAA1EbEdeF";
 const _MINT_TOPIC = "0xcf6fbb9dcea7d07263ab4f5c3a92f53af33dffc421d9d121e1c74b307e68189d";
 const _MAXIMUM_TARGET_STR = "27606985387162255149739023449108101809804435888681546220650096895197184";  // 2**234
 const _MINIMUM_TARGET = 2**16;
-const _ETH_BLOCKS_PER_REWARD = 60;
+const _ETH_BLOCKS_PER_REWARD = 600;
 const _HASHRATE_MULTIPLIER = 2**22; /* TODO: calculate this from max_target (https://en.bitcoin.it/wiki/Difficulty) */
 /* contract variable storage locations */
 const _LAST_DIFF_START_BLOCK_INDEX = '6';
@@ -37,7 +37,7 @@ const _MINING_TARGET_INDEX = '11';
 const _MAXIMUM_TARGET_BN = new Eth.BN(_MAXIMUM_TARGET_STR, 10);
 const _MINIMUM_TARGET_BN = new Eth.BN(_MINIMUM_TARGET);
 const _IDEAL_BLOCK_TIME_SECONDS = _ETH_BLOCKS_PER_REWARD * _SECONDS_PER_ETH_BLOCK;
-console.log("FUK111we");
+console.log("FUK111weFUCKS");
 /* TODO: figure out why it doesn't work w metamask */
 var eth = new Eth(new Eth.HttpProvider("https://polygon-mumbai.g.alchemy.com/v2/-vhbuZz5Q7xFSQ0NWOktejBe2kBJkAPZ"));
 // if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
