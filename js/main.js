@@ -15,7 +15,7 @@ el('#footerversion').innerHTML = version;
 /* intrinsic values */
 const _SECONDS_PER_ETH_BLOCK = 15;
 const _ZERO_BN = new Eth.BN(0, 10);
-
+console.log("TWO");
 /* contract constants */
 /* todo: pull these from the contract */
 /* todo: move these into some kind of contract helper class */
