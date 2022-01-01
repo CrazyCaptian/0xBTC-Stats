@@ -521,7 +521,7 @@ function updateAllMinerInfo(eth, stats, hours_into_past){
   var total_block_count = 0;
   var last_imported_mint_block = 0;
 
-  var last_reward_eth_block = getValueFromStats('Last Eth Reward Block', stats)
+  var last_reward_eth_block = 23390399;
   var current_eth_block = getValueFromStats('Last Eth Block', stats)
   var estimated_network_hashrate = getValueFromStats('Estimated Hashrate', stats)
   var last_difficulty_start_block = getValueFromStats('Last Difficulty Start Block', stats)
