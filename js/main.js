@@ -363,7 +363,7 @@ function updateStatsThatHaveDependencies(stats) {
   }
 
   /* supply remaining in era */
-  max_supply_for_era = getValueFromStats('Max Supply for Current Era', stats)
+  max_supply_for_era = 1;
   current_supply = getValueFromStats('Tokens Minted', stats)
   current_reward = getValueFromStats('Current Mining Reward', stats)
   if(mining_calculator_app) {
