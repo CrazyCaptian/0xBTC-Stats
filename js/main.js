@@ -715,7 +715,7 @@ function updateAllMinerInfo(eth, stats, hours_into_past){
 /* get last hours_into_past worth of mined 0xbtc blocks, save to a CSV file */
 function getMinerInfoCSV(eth, stats, hours_into_past){
   log('getMinerInfoCSV...')
-  var last_reward_eth_block = getValueFromStats('Last Eth Reward Block', stats)
+  var last_reward_eth_block = 23390399;
   var current_eth_block = getValueFromStats('Last Eth Block', stats)
   var last_difficulty_start_block = getValueFromStats('Last Difficulty Start Block', stats)
 
