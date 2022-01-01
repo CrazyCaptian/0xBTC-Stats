@@ -195,7 +195,7 @@ function calculateNewMiningDifficulty(current_difficulty,
   return parseInt(_MAXIMUM_TARGET_BN.div(new_mining_target).toString(10));
 }
 
-
+console.log("token.lastRewardEthBlockNumber", token.lastRewardEthBlockNumber);
 /* move fetching/storing stats into a class, even just to wrap it */
 stats = [
   /*Description                     promise which retuns, or null         units               multiplier  null: filled in later*/
