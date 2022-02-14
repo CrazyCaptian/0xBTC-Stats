@@ -205,6 +205,7 @@ stats = [
   ['Current Average Reward Time',   null,                                 "minutes",          1,          null     ], /* mining difficulty */
   ['Last Difficulty Start Block',   token.latestDifficultyPeriodStarted,  "",                 1,          null     ], /* mining difficulty */
   ['Tokens Minted',                 token.tokensMinted,                   _CONTRACT_SYMBOL,   0.00000001, null     ], /* supply */
+  ['Inflation Percentage Per Year', token.latestDifficultyPeriodStarted,  "",                 1,          null     ], /* supply */
   ['Max Supply for Current Era',    token.maxSupplyForEra,                _CONTRACT_SYMBOL,   0.00000001, null     ], /* mining */
   ['Supply Remaining in Era',       null,                                 _CONTRACT_SYMBOL,   0.00000001, null     ], /* mining */
   ['Last Eth Reward Block',         token.lastRewardEthBlockNumber,       "",                 1,          null     ], /* mining */
@@ -382,6 +383,20 @@ function updateStatsThatHaveDependencies(stats) {
   rewards_left = _BLOCKS_PER_READJUSTMENT - rewards_since_readjustment
   el_safe('#RewardsUntilReadjustment').innerHTML = "<b>" + rewards_left.toString(10) + "</b>";
 
+  /*Get Inflation % per year */
+  last_Block = getValueFromStats('Last Eth Block', stats)
+  block_Then = getValueFromStats('Inflation Percentage Per Year', stats) //block not seconds since
+  blocks_Total = last_Block - block_Then
+  seconds_Total = blocks_Total * 13
+  current_Reward = getValueFromStats('Current Mining Reward', stats)
+  epoch_From = getValueFromStats('Epoch Count', stats) %1024
+  total_Minted = getValueFromStats('Tokens Minted', stats)
+  year_Time = 60*60*24*365
+  inflation = current_Reward * epoch_From * year_Time / seconds_Total
+  inflation_Yearly = inflation/(total_Minted+inflation) * 100
+  inflation_Yearly = inflation_Yearly.toFixed(2)
+  el_safe('#InflationPercentagePerYear').innerHTML = "<b>" + inflation_Yearly + "</b> % per year";
+
   /* time per reward block */
   current_eth_block = getValueFromStats('Last Eth Block', stats)
   difficulty_start_eth_block = getValueFromStats('Last Difficulty Start Block', stats)
@@ -552,6 +567,11 @@ function updateAllMinerInfo(eth, stats, hours_into_past){
   }
 
   var start_log_search_at = Math.max(last_difficulty_start_block, last_imported_mint_block + 1);
+/*for polygon blocks, they are at least 10000000 ahead stops error */
+if(last_imported_mint_block+10000000 > last_difficulty_start_block){
+start_log_search_at = last_difficulty_start_block;
+}
+
 
   log("searching last", last_reward_eth_block - start_log_search_at, "blocks");
 
@@ -898,5 +918,4 @@ function updateAndDisplayAllStats() {
   createStatsTable();
   loadAllStats();
 }
-
 
